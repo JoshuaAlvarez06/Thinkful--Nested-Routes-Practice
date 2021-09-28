@@ -1,7 +1,8 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
+import NoMatch from "./NoMatch";
 
 function App() {
   return (
@@ -15,13 +16,17 @@ function App() {
           <Link to="/about">About</Link>
         </li>
       </ul>
-
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route path="/about">
-        <About />
-      </Route>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route>
+          <NoMatch />
+        </Route>
+      </Switch>
     </div>
   );
 }
